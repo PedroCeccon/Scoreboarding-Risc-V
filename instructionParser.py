@@ -61,8 +61,3 @@ def parse_file(filename):
                 'imm': imm
             })
     return instructions
-
-# Example usage
-instructions = parse_file('example.s')
-for i in instructions: 
-    print(i)
