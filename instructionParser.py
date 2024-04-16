@@ -14,10 +14,11 @@ REG_PREFIXES = {
     'f': 'float'
 }
 
-def parse_file(filename):
+def parse_file(filename, instructionsRead):
     instructions = []
     with open(filename, 'r') as f:
         for line in f:
+            instructionsRead.append(line.strip())
             fields = line.strip().replace(',', ' ').split()
             opcode = fields[0].lower()
             if opcode not in OPCODES:

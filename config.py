@@ -3,9 +3,10 @@ from enum import Enum
 FUType = Enum('FUType', ['int', 'add', 'mult', 'div'])
 
 class FunctionalUnit:
-    def __init__(self, id, type):
+    def __init__(self, id, type, cycle):
         self.id = id
         self.type = type
+        self.cycle = cycle
         self.busy = False
         self.Fi = None
         self.Fj = None
@@ -32,7 +33,7 @@ def generate_functional_units(config):
     functional_units = []
     for unit in config:
         for i in range(unit['qtd']):
-            functional_units.append(FunctionalUnit(i, FUType[unit['type']]))
+            functional_units.append(FunctionalUnit(i, FUType[unit['type']], unit['cycles']))
     return functional_units
 
 def configSetup(filename):
